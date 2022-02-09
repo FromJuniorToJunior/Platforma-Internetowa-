@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Alaska - Courses Online</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content="Lineage2,mmorpg"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/css1.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/css/fontello.css}"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap" rel="stylesheet">
+    <script th:src="@{/js/clock.js}"></script>
+
+
+</head>
+<body th:onload="startTime()">
+<div id="container">
+    <div class="rectangle">
+        <div id="logo">Alaska</div>
+        <div id="clock"></div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <div class="square">
+        <a th:href="@{/?index=1}">
+            <div class="tile1">
+                <i class="icon-user"></i></br>Alaska
+            </div>
+        </a>
+        <a th:href="@{/?index=6}">
+            <div class="tile1">
+                <i class="icon-desktop"></i></br> Offer
+            </div>
+        </a>
+        <div style="clear: both;"></div>
+        <a th:href="@{/login}">
+            <div class="tile2">
+                <i class="icon-lightbulb"></i></br>Sign in/ Sign up
+            </div>
+        </a>
+        <a th:href="@{/?index=5}">
+            <div class="tile3">
+                <i class="icon-mail"></i></br>Contact
+            </div>
+        </a>
+        <div style="clear: both;"></div>
+        <div class="tile4">
+            <p>Talk is cheap. Show me the code!</br>
+                Linus Torvalds
+            </p>
+        </div>
+
+    </div>
+
+    <div class="square">
+        <div class="tile5" th:utext="${content}"></div>
+        <div class="yt">
+            <i class="icon-youtube-squared"></i>
+        </div>
+        <div class="fb">
+            <i class="icon-facebook-official"></i>
+        </div>
+        <div class="gp">
+            <i class="icon-gplus-squared"></i>
+        </div>
+        <div class="tw">
+            <i class="icon-twitter"></i>
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+    <div class="rectangle">
+        2021 &copy; Alaska
+    </div>
+
+</div>
+
+</body>
+</html>

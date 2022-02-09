@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alaska - sign up</title>
+    <meta name="description" content="Nowoczesna platofrma edukacyjna do zdalnego kształcenia"/>
+    <meta name="keywords" content="edukacja,zdalna,kształcenie,rozwój"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+   <!-- <link rel="stylesheet" th:href="@{/css/RegisterLoginMain.css}"/>-->
+    <link rel="stylesheet" th:href="@{/css/registration.css}">
+
+
+</head>
+<body>
+<!--<div id="kontener">
+    <h1 style="text-align: center;">Registration</h1>
+    <div id="registration">
+        <form th:action="@{/processRegister}" th:object="${user}"
+              method="post">
+            <table>
+                <tr>
+                    <td><label>Email: </label></td>
+                    <td><input type="email" th:field="*{email}" required/></td>
+                </tr>
+                <tr>
+                    <td><label>Password: </label></td>
+                    <td><input type="password" th:field="*{password}" required minlength="6" maxlength="10"/></td>
+                </tr>
+                <tr>
+                    <td><label>Name: </label></td>
+                    <td><input type="text" th:field="*{imie}"/></td>
+                </tr>
+                <tr>
+                    <td><label>Surname: </label></td>
+                    <td><input type="text" th:field="*{nazwisko}"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="submit" value="Register"/></td>
+                </tr>
+            </table>
+
+
+        </form>
+    </div>
+</div>-->
+<div id="container">
+    <form method="post" th:action="@{/processRegister}">
+        <h3>Sign up</h3>
+        <fieldset>
+            <legend>Account</legend>
+            <label class="labelBlock" for="email">Email: </label>
+            <input id="email" type="email" name="email">
+            <label class="labelBlock" for="password">Password: </label>
+            <input id="password" type="password" name="password">
+            <label class="labelBlock" for="passwordAgain">Password: </label>
+            <input id="passwordAgain" type="password" name="repeatPassword">
+        </fieldset>
+
+        <fieldset>
+            <legend>Personal data</legend>
+            <label class="labelBlock" for="name">Name: </label>
+            <input id="name" type="text" name="name">
+            <label class="labelBlock" for="surname">Surname: </label>
+            <input id="surname" type="text" name="surname">
+            <br/>
+            <label class="labelBlock" for="gender">Gender: </label>
+            <input id="gender" type="radio" name="gender" value="male">Male
+            <input type="radio" name="gender" value="female"> Female
+        </fieldset>
+        <fieldset>
+            <legend>Address</legend>
+            <label class="labelBlock" for="country">Country:</label>
+            <input id="country" type="text" name="country">
+            <label class="labelBlock" for="city">City:</label>
+            <input id="city" type="text" name="city">
+            <label class="labelBlock" for="street">Street:</label>
+            <input id="street" type="text" name="street">
+            <label class="labelBlock" for="bNumber">Building:</label>
+            <input id="bNumber" type="text" name="bNumber">
+            <label class="labelBlock" for="localNumber">Local</label>
+            <input id="localNumber" type="text" name="localNumber">
+        </fieldset>
+        <fieldset>
+            <legend>Hobby</legend>
+            <label>Field: </label>
+            <ul>
+                <li th:each="hobby : ${hobbyList}">
+                    <input type="checkbox" name="hobby" th:value="${hobby}">
+                    <label th:text="${hobby}"></label>
+                </li>
+            </ul>
+
+
+        </fieldset>
+
+        <input type="submit" value="Sign up">
+    </form>
+</div>
+</body>
+</html>

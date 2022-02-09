@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alaska - main</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}"/>
+
+
+</head>
+<body> <!--onload="test()"-->
+
+<div id="container">
+    <div class="linkbar">
+        <div style="margin-top: 30px;"><a href="account">Account</a></div>
+    </div>
+    <div class="linkbar">
+        <div style="margin-top: 30px;"><a href="course">Courses</a></div>
+    </div>
+    <div class="linkbar"></div>
+    <div class="linkbar"></div>
+    <div class="linkbar">
+        <form class="form" method="post" name="logout" th:action="@{/logout}">
+            <input type="submit" value="Sign Out"/>
+
+        </form>
+    </div>
+    <div style="clear: both;"></div>
+    <!-- Welcome <label th:object="${usera}" th:text="${usera.email}"></label>-->
+    <div id="search">
+        <form th:action="@{/search}" method="post" th:object="${kursSearch}">
+            <table>
+                <tr style="background-color: #303030; color: snow;">
+                    <!--  <th>id</th>-->
+                    <th>Course name</th>
+                    <th>Language</th>
+                    <th>Category</th>
+                    <th>Author name</th>
+                    <th>Author surname</th>
+                    <th>Difficulty</th>
+                </tr>
+                <tr>
+                    <!--   <td><input type="number" name="id" min="1"/></td>-->
+                    <td><input type="text" th:field="*{nazwa}"/></td>
+                    <td>
+                        <select name="jezyka">
+                            <option value="null"></option>
+                            <option th:each="language : ${language}" th:value="${language}"
+                                    th:text="${language}"></option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="kategoriaa">
+                            <option value="null"></option>
+                            <option th:each="category : ${category}" th:value="${category}"
+                                    th:text="${category}"></option>
+                        </select>
+                    </td>
+                    <td><input type="text" name="imie"/></td>
+                    <td><input type="text" name="nazwisko"/></td>
+                    <td>
+                        <select name="poziomTrudnoscia">
+                            <option value="null"></option>
+                            <option th:each="difficulty : ${difficulty}" th:value="${difficulty}"
+                                    th:text="${difficulty}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <!--  <td></td>-->
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><input class="form" type="submit" value="Search"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <!--Recommended-->
+    <div id="blocks">
+        <div class="bloczek" th:each="kurs:${rec}">
+            <h3>Recommended for you:</h3>
+            <a th:href="@{course?courseId={id}(id=${kurs.kursId})}" th:if="${kurs.check()}">
+                <img width="200px" height="150px" th:src="'data:image/jpeg;base64,' + ${kurs.getImgData()}"
+                     title="move to course" alt="course image"/>
+            </a>
+            <a th:href="@{course?courseId={id}(id=${kurs.kursId})}" th:unless="${kurs.check()}">
+                <img width="200px" height="150px" th:src="@{/images/gear.png}" title="move to course"
+                     alt="course image"/>
+            </a>
+            <div class="subbloczek">
+                <h3 th:text="${kurs.nazwa}"></h3>
+                <ul>
+                    <li th:text="${kurs.autor.getFullName()}"></li>
+                    <li th:text="${kurs.kategoria}"></li>
+                    <li th:text="${kurs.jezyk}"></li>
+                    <li th:text="${kurs.poziomTrudnosci}"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="clear: both;"></div>
+        <!--End recommended-->
+
+        <div id="coursesSign">
+            <h3>Courses</h3>
+        </div>
+        <hr />
+
+        <div class="bloczek" th:each="kurs: ${kursy}">
+            <a th:href="@{course?courseId={id}(id=${kurs.kursId})}" th:if="${kurs.check()}">
+                <img width="200px" height="150px" th:src="'data:image/jpeg;base64,' + ${kurs.getImgData()}"/>
+            </a>
+            <a th:href="@{course?courseId={id}(id=${kurs.kursId})}" th:unless="${kurs.check()}">
+                <img width="200px" height="150px" th:src="@{/images/gear.png}" title="move to course"
+                     alt="course image"/>
+            </a>
+
+
+            <div class="subbloczek">
+                <h3 th:text="${kurs.nazwa}"></h3>
+                <ul>
+                    <li th:text="${kurs.autor.getFullName()}"></li>
+                    <li th:text="${kurs.kategoria}"></li>
+                    <li th:text="${kurs.jezyk}"></li>
+                    <li th:text="${kurs.poziomTrudnosci}"></li>
+                </ul>
+
+                <!--  <label th:text="${kurs.slike}"></label>
+                  <label th:text="${kurs.disLike}"></label>-->
+                <div class="pp">
+                    <label>Like rate:</label>
+                </div>
+            </div>
+
+            <div class="progressBar">
+                <div class="progress">
+                    <label class="progressLabel"></label>
+                    <script th:inline="javascript">
+                    var like = /*[[${kurs.slike}]]*/;
+                    var dislike = /*[[${kurs.disLike}]]*/;
+                    var id = /*[[${kurs.getIdx()}]]*/;
+
+
+
+
+
+                    </script>
+                    <script src="/js/progress.js"></script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- <table>
+         <thead>
+         <tr style="background-color: #303030; color: snow;">
+             <th>id</th>
+             <th>course name</th>
+             <th>language</th>
+             <th>category</th>
+             <th>difficulty</th>
+             <th>author</th>
+             <th>link</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr class="tablebody" th:each="kurs: ${kursy}">
+             <td th:text="${kurs.kursId}"></td>
+             <td th:text="${kurs.nazwa}"></td>
+             <td th:text="${kurs.jezyk}"></td>
+             <td th:text="${kurs.kategoria}"></td>
+             <td th:text="${kurs.poziomTrudnosci}"></td>
+             <td th:text="${kurs.autor.getFullName()}"></td>
+             <td><a th:text="course" th:href="@{course?courseId={id}(id=${kurs.kursId})}"></a></td>
+         </tr>
+         </tbody>
+         <tfoot>
+         <tr>
+             <td id="links" colspan="7">
+                 <a th:each="pageslist: ${pagesList}" th:href="${pageslist.addr}" th:text="${pageslist.id}"></a>
+             </td>
+         </tr>
+
+         </tfoot>
+     </table>-->
+    <div style="clear: both;"></div>
+    <div id="pageLinks">
+        <a class="LN" th:each="page:${pages}" th:href="${page.addr}">
+            <div class="listNumber" th:text="${page.id}"></div>
+        </a>
+    </div>
+</div>
+
+
+</body>
+</html>

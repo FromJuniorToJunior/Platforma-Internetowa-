@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alaska - Course Registration</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/MainPage.css}"/>
+</head>
+<body>
+<div id="container">
+    <h1>Would you like to register for this course ?</h1>
+    <Form method="post" th:action="@{/courseRegistration}" class="form">
+        <input type="text" hidden name="cc" th:value="${courseId}">
+        <input type="submit" value="Yes"/>
+    </Form>
+    <form method="post" th:action="@{/courseRegistrationDecline}" class="form">
+        <input type="submit" value="No"/>
+    </form>
+
+    <div th:each="komentarz : ${komentarze}" style="margin-top: 50px;">
+        <div class="komentarz">
+            <label th:text="${komentarz.autor.getFullName()}+':'"></label>
+            <br />
+            <p th:text="${komentarz.komentarz}"></p>
+            <hr />
+
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

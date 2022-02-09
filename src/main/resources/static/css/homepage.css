@@ -1,0 +1,28 @@
+body{
+background-color:#66FF66;
+}
+#container {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#panel {
+    height: 100px;
+}
+.button{
+    width: 198px;
+    height: 100px;
+    background-color: #0000FF;
+    float: left;
+    border-right: 2px snow dotted;
+    text-align: center;
+    font-size: 25px;
+
+}
+.button a{
+  color: snow;
+  text-decoration: none;
+}
+.button a:hover{
+    color: #66FF66;
+}

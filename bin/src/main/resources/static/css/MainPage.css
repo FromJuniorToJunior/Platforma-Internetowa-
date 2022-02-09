@@ -1,0 +1,106 @@
+#container {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#container table{
+    margin-top: 100px;
+}
+
+#container tr:hover{
+    background-color: #636394;
+}
+#container table,th,td {
+    border: 1px solid snow;
+    margin-left: 150px;
+}
+.linkbar {
+    width: 199px;
+    height: 100px;
+    background-color: #303030;
+    float: left;
+    border-right: 1px solid snow;
+    text-align: center;
+    font-size: 25px;
+
+
+}
+.linkbar a{
+    text-decoration: none;
+    color: snow;
+}
+.linkbar a:hover{
+    color: red;
+}
+.form input{
+    background-color: #303030;
+    text-decoration: none;
+    border: none;
+    color: snow;
+    font-size: 25px;
+    margin-top: 30px;
+}
+.form input:hover{
+    color: red;
+}
+#links {
+ text-align: center;
+ font-size: 30px;
+ color: #8c0073;
+}
+#links a{
+    padding: 5px;
+    text-decoration: none;
+}
+#links a:hover {
+    color: red;
+}
+#firstPanel {
+    margin-top: 100px;
+    height: 202px;
+    width: 1000px;
+}
+#blockA {
+    float: left;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #303030;
+
+
+}
+#blockB {
+    margin-left: 20px;
+    border: 1px solid #303030;
+    float: left;
+    width: 776px;
+    height: 200px;
+
+}
+#blockB label{
+    margin-left: 10px;
+}
+#data {
+    width: 998px;
+    height: 198px;
+    border: 1px solid #303030;
+    margin-top: 20px;
+}
+.insertable {
+    width: 499px;
+    height: 200px;
+    float: left;
+
+}
+.insertable input {
+        background-color: #303030;
+        text-decoration: none;
+        border: none;
+        color: snow;
+        font-size: 20px;
+        margin-top: 10px;
+        margin-left: 10px;
+}
+#search table,th,td{
+    margin-left: -60px;
+
+}

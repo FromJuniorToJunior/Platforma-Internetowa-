@@ -1,0 +1,28 @@
+@import url("/css/form.css");
+html{
+height:100%;}
+body {
+    background-image: url("/images/board.jpg");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#container{
+    background-color: snow;
+    opacity: 0.9;
+    width: 400px;
+    height: 600px;
+    /*margin-right: auto;
+    margin-left: auto;*/
+    border: 1px solid black;
+  /*  padding: 10px;*/
+    /*margin-top: 10%;*/
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+}

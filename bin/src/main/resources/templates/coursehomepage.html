@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Course HomePage</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/MainPage.css}"/>
+</head>
+<body>
+<div id="container">
+    <div class="linkbar">
+        <div style="margin-top: 30px;"><a href="account">Account</a></div>
+    </div>
+    <div class="linkbar">
+        <div style="margin-top: 30px;"><a href="main">Main Page</a></div>
+    </div>
+    <div class="linkbar">
+        <div style="margin-top: 30px;"><a href="course">Courses</a></div>
+    </div>
+    <div class="linkbar"></div>
+    <div class="linkbar">
+        <form class="form" method="post" name="logout" th:action="@{/logout}">
+            <input type="submit" value="Sign Out"/>
+
+        </form>
+    </div>
+    <div style="clear: both;"></div>
+
+
+    <form method="post" th:action="@{/addComment}" th:object="${komentarzDoFormy}" style="margin-top: 20px;">
+        <textarea th:field="*{koment}" style="width:998px;"></textarea>
+        <input type="submit" value="Add comment"/>
+    </form>
+    <hr/>
+
+    <form th:if="${autor}" th:action="@{/addFile}" method="post" enctype="multipart/form-data">
+        <label>Administrator Panel:</label><br />
+        <input name="courseId" th:value="${courseId}" hidden/>
+        <input type="file" name="file" value="search" multiple required/>
+        <input type="submit" value="Add file"/>
+    </form>
+    <form th:if="${autor}" method="post" th:action="@{/deleteCourse}">
+        <label>Delete course:</label>
+        <input type="text" name="courseId" hidden th:value="${courseId}">
+        <input type="submit" value="delete">
+        <hr/>
+    </form>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Download link</th>
+        </tr>
+        <tr th:each="file : ${files}">
+            <td th:text="${file.docName}"></td>
+            <td><a th:href="@{'/downloadFile/'+${file.fileId}}">download</a></td>
+
+        </tr>
+    </table>
+    <hr/>
+
+
+
+    <!--WEBRTCCHAT-->
+
+
+    <form id="usernameForm" name="usernameForm">
+        <input type="text" id="name" th:value="${name}" hidden/>
+        <button type="submit">Join chat</button>
+    </form>
+
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Course chat</h2>
+        </div>
+        <div class="connecting">Connecting...</div>
+        <ul id="messageArea">
+
+        </ul>
+        <form id="messageForm" name="messageForm" nameForm="messageForm">
+            <input type="text" id="message" placeholder="Type a message..."
+                   autocomplete="off"/>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <hr/>
+
+</div>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

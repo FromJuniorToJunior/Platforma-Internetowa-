@@ -1,0 +1,55 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>International courses Alaska</title>
+    <meta name="description" content="Nowoczesna platofrma edukacyjna do zdalnego kształcenia"/>
+    <meta name="keywords" content="edukacja,zdalna,ksztalcenie,rozwój"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" th:href="@{/css/RegisterLoginMain.css}"/>
+</head>
+<body>
+
+<div id="kontener">
+    <div id="logo">
+        <!--<img th:src="@{/images/logoo.png}"/>-->
+    </div>
+    <div id="tekstOne">
+        <!--<div id="tekstOneUpper">Uniwersytet Jarosława</div>
+        <div id="tekstOneBottom">Platforma e-learningowa</div>-->
+    </div>
+    <div style="clear: both;"></div>
+    <div id="loginScreen">
+        <div id="block1">
+            <form name='form' th:action="@{/login}" method='POST'>
+                <table>
+                    <tr>
+                        <td><label>login: </label></td>
+                        <td><input type='text' name='email' value='' autofocus></td>
+                    </tr>
+                    <tr>
+                        <td><label>password: </label></td>
+                        <td><input type='password' name='password'/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input name="submit" type="submit" value="login"/></td>
+                    </tr>
+                </table>
+
+            </form>
+        </div>
+        <div id="block2">
+            <p>
+                <a th:href="@{/register}">Registration</a>
+            </p>
+            <p>
+                <a th:href="@{/autor}">Author</a>
+            </p>
+        </div>
+
+    </div>
+    <div th:if="${param.error}" id="block3"><strong>Wrong login data or account not verified</strong></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alaska - account</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}"/>
+
+</head>
+<body >
+<div id="container">
+    <div class="linkbar">
+        <div style="margin-top: 30px;"><a href="account">Account</a></div>
+    </div>
+    <div class="linkbar">
+        <div style="margin-top: 30px;"><a href="main">Main Page</a></div>
+    </div>
+    <div class="linkbar">
+        <div style="margin-top: 30px;"><a href="course">Courses</a></div>
+    </div>
+    <div class="linkbar"></div>
+    <div class="linkbar">
+        <form class="form"  method="post" name="logout" th:action="@{/logout}">
+            <input type="submit" value="Sign Out"/>
+
+        </form>
+    </div>
+    <div style="clear: both;"></div>
+    <div id="firstPanel">
+        <div id="blockA">
+            <img th:unless="${usera.check()}" th:src="@{{id}(id=${usera.getObraz()})}" width="199" height="199"/>
+            <img th:if="${usera.check()}" th:src="'data:image/jpeg;base64,' + ${usera.getImgData()}" width="199" height="199">
+        </div>
+        <div id="blockB">
+            <label th:text="'Name/Surname: ' + ${usera.getFullName()}"></label>
+            <br/>
+            <label th:text="'Email: '+${usera.getEmail()}"></label>
+            <br/>
+            <label th:text="'Language: '+${usera.getJezyk()}"></label>
+            <br/>
+            <label th:text="'Second Language: '+${usera.getJezykDrugi()}"></label>
+            <br />
+            <label>Address:</label>
+            <br/>
+            <label th:text="'Country: '+${usera.getAdres().getKraj()}"></label>
+            <br/>
+            <label th:text="'City: '+${usera.getAdres().getMiasto()}"></label>
+            <br/>
+            <label th:text="'Street: '+${usera.getAdres().getUlica()}"></label>
+            <br/>
+            <label th:text="'Building number: '+${usera.getAdres().getNumerBudynku()}"></label>
+            <br/>
+            <label th:text="'Local number: '+${usera.getAdres().getNumerLokalu()}"></label>
+            <br/>
+            <label>Hobby: </label>
+            <label th:each="inter : ${usera.getZainteresowania()}" th:text="${inter.getKategoria()}"></label>
+        </div>
+
+    </div>
+    <div style="clear:both;"></div>
+    <div id="data">
+        <div class="insertable">
+            <form  class="form" name="setLanguage" method="post" th:action="@{/setLanguage}">
+                <select name="languageFromForm">
+                    <option th:each="language : ${lang}" th:value="${language}" th:text="${language}"></option>
+                    <input type="submit" value="Set language"/>
+                </select>
+
+            </form>
+
+            <form class="form"  name="setSecondLanguage" method="post" th:action="@{/setSecondLanguage}">
+                <select name="languageFromForm">
+                    <option th:each="language : ${lang}" th:value="${language}" th:text="${language}"></option>
+                    <input type="submit" value="Set language"/>
+                </select>
+
+            </form>
+
+            <form  class="form"  method="post" th:action="@{/setHobby}" name="setHobby">
+                <select name="hobby">
+                    <option th:each="hobby : ${hobby}" th:value="${hobby}" th:text="${hobby}"></option>
+                </select>
+                <input type="submit" value="Set hobby"/>
+            </form>
+            <form  th:action="@{/addUserImage}" method="post" enctype="multipart/form-data">
+                <label for="file-upload" class="custom-file-upload">
+                    Pick your image.
+                </label>
+                <input id="file-upload" type="file" name="file" value="search" multiple required/>
+                <input type="submit" value="Add Image"/>
+            </form>
+        </div>
+        <div class="insertable">
+            <form class="form"  method="post" th:action="@{/setAddress}" th:object="${usera}">
+                <input class="tt" type="text" th:field="*{adres.kraj}"/>
+                <input class="tt" type="text" th:field="*{adres.miasto}"/>
+                <input class="tt" type="text" th:field="*{adres.ulica}"/>
+                <input class="tt" type="number" th:field="*{adres.numerBudynku}"/>
+                <input class="tt" type="number" th:field="*{adres.numerLokalu}"/>
+
+                <input type="submit" value="Set address"/>
+
+
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

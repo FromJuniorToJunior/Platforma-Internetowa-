@@ -1,0 +1,188 @@
+#container {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#container table{
+    margin-top: 100px;
+}
+
+#container tr:hover{
+    background-color: #636394;
+}
+#container table,th,td {
+    border: 1px solid snow;
+    margin-left: 150px;
+}
+.linkbar {
+    width: 199px;
+    height: 100px;
+    background-color: #303030;
+    float: left;
+    border-right: 1px solid snow;
+    text-align: center;
+    font-size: 25px;
+
+
+}
+.linkbar a{
+    text-decoration: none;
+    color: snow;
+}
+.linkbar a:hover{
+    color: red;
+}
+.form input{
+    background-color: #303030;
+    text-decoration: none;
+    border: none;
+    color: snow;
+    font-size: 25px;
+    margin-top: 30px;
+}
+.form input:hover{
+    color: red;
+}
+#links {
+ text-align: center;
+ font-size: 30px;
+ color: #8c0073;
+}
+#links a{
+    padding: 5px;
+    text-decoration: none;
+}
+#links a:hover {
+    color: red;
+}
+#firstPanel {
+    margin-top: 100px;
+    height: 202px;
+    width: 1000px;
+}
+#blockA {
+    float: left;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #303030;
+
+
+}
+#blockB {
+    margin-left: 20px;
+    border: 1px solid #303030;
+    float: left;
+    width: 776px;
+    height: 200px;
+
+}
+#blockB label{
+    margin-left: 10px;
+}
+#data {
+    width: 998px;
+    height: 248px;
+    border: 1px solid #303030;
+    margin-top: 20px;
+}
+.insertable {
+    width: 499px;
+    height: 200px;
+    float: left;
+
+}
+.insertable input {
+        background-color: #303030;
+        text-decoration: none;
+        border: none;
+        color: snow;
+        font-size: 20px;
+        margin-top: 10px;
+        margin-left: 10px;
+}
+#search table,th,td{
+    margin-left: 0px;
+
+}
+.bloczek {
+    margin-top: 50px;
+    width: 200px;
+    height: 325px;
+    background-color: snow;
+    float: left;
+    margin-right: 25px;
+    margin-left: 20px;
+}
+.subbloczek {
+    width: 200px;
+    height: 135px;
+    background-color: #303030;
+    color: snow;
+   font-size: 12px;
+}
+.subbloczek h3{
+text-align: center;
+}
+.progressBar{
+    height: 25px;
+    background-color: #66CCFF;
+}
+.progress{
+    height: 24px;
+    width: 0px;
+     background-color: #0000FF;
+     color: snow;
+     text-align: center;
+     border-top: 1px solid red;
+
+}
+.progressLabel{
+   font-size: 15px;
+}
+.pp{
+ height: 25px;
+}
+#leftPanel{
+    float: left;
+    width: 100px;
+}
+.listNumber{
+    margin-right: 5px;
+    float: left;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-size: 20px;
+    color: snow;
+    background-color: #303030;
+
+}
+.LN{
+    text-decoration: none;
+}
+#pageLinks{
+    width: 200px;
+    height: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+}
+#coursesSign{
+    width: 50px;
+    height: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #303030;
+    margin-top: 75px;
+
+
+}
+input[type="file"]{
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}

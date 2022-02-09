@@ -1,0 +1,132 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alaska - account</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}"/>
+</head>
+<body>
+<div id="container">
+    <div class="linkbar">
+        <div style="margin-top: 30px;"><a href="account">Account</a></div>
+    </div>
+    <div class="linkbar">
+        <div style="margin-top: 30px;"><a href="main">Main Page</a></div>
+    </div>
+    <div class="linkbar">
+        <!--  <div style="margin-top: 30px;"><a href="courses">Courses</a></div>-->
+    </div>
+    <div class="linkbar"></div>
+    <div class="linkbar">
+        <form class="form"  method="post" name="logout" th:action="@{/logout}">
+            <input type="submit" value="Sign Out"/>
+
+        </form>
+    </div>
+    <div style="clear: both;"></div>
+    <h3>Courses where you're student: </h3>
+    <hr/>
+    <table>
+        <thead>
+        <tr style="background-color: #303030; color: snow;">
+            <th>id</th>
+            <th>course name</th>
+            <th>language</th>
+            <th>category</th>
+            <th>difficulty</th>
+            <th>author</th>
+            <th>link</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="kurs : ${kursyUsera}">
+            <td th:text="${kurs.kursId}"></td>
+            <td th:text="${kurs.nazwa}"></td>
+            <td th:text="${kurs.jezyk}"></td>
+            <td th:text="${kurs.kategoria}"></td>
+            <td th:text="${kurs.poziomTrudnosci}"></td>
+            <td th:text="${kurs.autor.getFullName()}"></td>
+            <td><a th:text="course" th:href="@{course?courseId={id}(id=${kurs.kursId})}"></a></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+    <h3>Your own courses:</h3>
+    <hr/>
+
+    <table>
+        <thead>
+        <tr style="background-color: #303030; color: snow;">
+            <th>id</th>
+            <th>course name</th>
+            <th>language</th>
+            <th>category</th>
+            <th>difficulty</th>
+            <th>author</th>
+            <th>link</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="kurs : ${kursyWlasne}">
+            <td th:text="${kurs.kursId}"></td>
+            <td th:text="${kurs.nazwa}"></td>
+            <td th:text="${kurs.jezyk}"></td>
+            <td th:text="${kurs.kategoria}"></td>
+            <td th:text="${kurs.poziomTrudnosci}"></td>
+            <td th:text="${kurs.autor.getFullName()}"></td>
+            <td><a th:text="course" th:href="@{course?courseId={id}(id=${kurs.kursId})}"></a></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+    <h3>Add new courses</h3>
+    <hr/>
+    <form th:action="@{/addNewCourse}" method="post" th:object="${newCourse}">
+        <table>
+            <thead>
+            <tr style="background-color: #303030; color: snow;">
+                <th>Course Name</th>
+                <th>Language</th>
+                <th>Category</th>
+                <th>Difficulty</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr style="margin-top:0px; background-color: snow;color:black;">
+                <td>
+                    <input type="text" th:field="*{nazwa}" required/>
+                </td>
+                <td>
+                    <select th:field="*{jezyk}">
+                        <option th:each="language : ${language}" th:value="${language}" th:text="${language}"></option>
+                    </select>
+                </td>
+                <td>
+                    <select th:field="*{kategoria}">
+                        <option th:each="category : ${category}" th:value="${category}" th:text="${category}"></option>
+                    </select>
+                </td>
+                <td>
+                    <select th:field="*{poziomTrudnosci}">
+                        <option th:each="difficulty : ${difficulty}" th:value="${difficulty}"
+                                th:text="${difficulty}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="submit" value="Add course"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+    </form>
+</div>
+</body>
+</html>
